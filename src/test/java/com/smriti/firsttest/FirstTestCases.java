@@ -1,4 +1,4 @@
-package com.smriti.firsttest;
+package test.java.com.smriti.firsttest;
 
 import java.io.File;
 import java.net.URL;

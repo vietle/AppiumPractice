@@ -6,6 +6,7 @@
 	<artifactId>sauce_appium_junit</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>sauce_appium_junit</name>
+	<url>http://maven.apache.org</url>
 	<description>Sample Appium tests using JUnit</description>
 	<dependencies>
 	    
@@ -66,6 +67,94 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-site-plugin</artifactId>
+                        <version>3.0</version>
+                        <configuration>
+                            <reportPlugins>
+                                <plugin>
+                                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                                    <version>2.2</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.codehaus.mojo</groupId>
+                                    <artifactId>cobertura-maven-plugin</artifactId>
+                                    <version>${cobertura.version}</version>
+                                    <configuration>
+                                        <formats>
+                                            <format>xml</format>
+                                        </formats>
+                                    </configuration>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-checkstyle-plugin</artifactId>
+                                    <version>2.9.1</version>
+                                    <!--<configuration>-->
+                                    <!--<configLocation>gol-checkstyle.xml</configLocation>-->
+                                    <!--</configuration>-->
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-pmd-plugin</artifactId>
+                                    <version>2.5</version>
+                                    <configuration>
+                                        <targetJdk>1.6</targetJdk>
+                                        <aggregate>true</aggregate>
+                                        <format>xml</format>
+                                        <rulesets>
+                                            <ruleset>/pmd-rules.xml</ruleset>
+                                        </rulesets>
+                                        <!-- CPD options -->
+                                        <minimumTokens>20</minimumTokens>
+                                        <ignoreIdentifiers>true</ignoreIdentifiers>
+                                    </configuration>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.codehaus.mojo</groupId>
+                                    <artifactId>findbugs-maven-plugin</artifactId>
+                                    <version>2.3.2</version>
+                                    <configuration>
+                                        <effort>Max</effort>
+                                        <xmlOutput>true</xmlOutput>
+                                    </configuration>
+                                </plugin>
+                                <plugin>
+                                    <artifactId>maven-javadoc-plugin</artifactId>
+                                    <version>2.9.1</version>
+                                    <configuration>
+                                        <source>1.6</source>
+                                        <doclet>
+                                            gr.spinellis.umlgraph.doclet.UmlGraphDoc
+                                        </doclet>
+                                        <docletArtifact>
+                                            <groupId>gr.spinellis</groupId>
+                                            <artifactId>UmlGraph</artifactId>
+                                            <version>4.6</version>
+                                        </docletArtifact>
+                                        <additionalparam>
+                                            -inferrel -inferdep -hide java.* -collpackages
+                                            java.util.* -attributes -operations
+                                            -enumerations -enumconstants
+                                        </additionalparam>
+                                    </configuration>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-jxr-plugin</artifactId>
+                                    <version>2.1</version>
+                                </plugin>
+                            </reportPlugins>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.wakaleo.gameoflife</groupId>
+                                <artifactId>gameoflife-build</artifactId>
+                                <version>${project.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
                     <plugin>
                                     <artifactId>maven-javadoc-plugin</artifactId>
                                     <version>2.9.1</version>
